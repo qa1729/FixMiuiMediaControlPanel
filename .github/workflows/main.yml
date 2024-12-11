@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 11
+          java-package: jdk
+          check-latest: false
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
         run: bash ./gradlew -PappVerName=${{ env.VERSION }} assembleRelease
-      - name: List files in output directory (for debugging)
-        run: ls -R app/build/outputs/apk/release/
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
